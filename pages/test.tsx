@@ -1,8 +1,12 @@
 import { NextPage } from "next";
-import HeroScene from "../components/r3f/HeroScene";
+import ContactScene from "../components/r3f/ContactScene";
 
 const TextPage: NextPage = () => {
-  return <HeroScene />;
+  return (
+    <div>
+      <ContactScene />
+    </div>
+  );
 };
 
 export default TextPage;

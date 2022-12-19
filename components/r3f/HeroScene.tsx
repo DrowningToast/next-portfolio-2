@@ -6,7 +6,7 @@ import {
   SpotLight,
 } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import { Bust } from "./Bust_very_low";
+import { Bust } from "./model/Bust_very_low";
 
 const HeroScene = () => {
   return (

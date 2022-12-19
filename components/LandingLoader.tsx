@@ -16,17 +16,29 @@ const variant: Variants = {
       staggerChildren: 0.1,
     },
   },
+  third: {
+    opacity: 0,
+    transition: {
+      delay: 1.25,
+      duration: 0.8,
+    },
+  },
 };
 
 const LandingLoader = () => {
   return (
     <motion.div
+      initial={"first"}
+      animate={"second"}
+      exit={"third"}
+      variants={variant}
       layout
-      className="w-full h-screen grid place-items-center bg-blue-700"
+      className="absolute inset-0 w-full h-screen grid place-items-center bg-blue-700"
     >
       <motion.div
         initial={"first"}
         animate={"second"}
+        exit={"third"}
         variants={variant}
         layout
         className=" flex flex-col justify-center items-center"

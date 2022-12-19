@@ -1,14 +1,26 @@
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import VerticalName from "./VerticalName";
 import HeroScene from "./r3f/HeroScene";
 import Link from "next/link";
+import { createContext, useState } from "react";
+import Navigation from "./Navigation";
 
 const Hero = () => {
+  const [showNav, setNav] = useState<boolean>(false);
+
   return (
-    <main className="w-full h-screen bg-black p-4 pt-24 md:pt-4 grid place-items-center">
-      <div className="flex md:grid flex-col justify-around md:place-items-center md:grid-cols-2 md:grid-rows-1 gap-x-2 relative w-full h-full">
-        <nav className="fixed flex items-center gap-x-2 top-4 md:top-4 inset-x-4 md:inset-x-4">
+    <main className="w-full h-screen bg-black p-4 pt-24 md:pt-4 grid place-items-center overflow-hidden">
+      <AnimatePresence>
+        {showNav && (
+          <div className="absolute inset-0 z-20 ">
+            <Navigation setNav={setNav} />
+          </div>
+        )}
+      </AnimatePresence>
+
+      <div className="flex md:grid flex-col justify-around md:place-items-center md:grid-cols-2 md:grid-rows-1 gap-x-2 relative w-full h-full z-0">
+        <div className="fixed flex items-center gap-x-2 top-4 md:top-4 inset-x-4 md:inset-x-4">
           <Link
             href="https://webring.wonderful.software#supratouch.dev"
             passHref
@@ -23,7 +35,7 @@ const Hero = () => {
           <h1 className="text-white font-bold md:text-xl font-sans">
             Personal Portfolio
           </h1>
-        </nav>
+        </div>
         <section className="w-full h-full relative">
           <div className="w-full h-full">
             <HeroScene />
@@ -38,25 +50,33 @@ const Hero = () => {
           </span>
           <motion.button
             whileHover={{
-              scale: 1.1,
-              boxShadow: "",
+              scale: 1.15,
+              transition: {
+                duration: 0.3,
+              },
             }}
+            onClick={() => setNav(!showNav)}
             className="relative bg-gradient-to-tr rounded-full border-transparent from-blue-400 to-blue-700 p-1 w-48 h-auto focus:ring-0 focus:from-blue-600 focus:to-blue-900"
           >
             <motion.div
               animate={{
                 opacity: 0,
+                transition: {
+                  duration: 0.8,
+                  ease: "easeOut",
+                },
               }}
               whileHover={{
                 opacity: 1,
                 transition: {
-                  duration: 0.4,
+                  duration: 0.8,
+                  ease: "easeOut",
                 },
               }}
               className="scale-110 blur-2xl rounded-full from-blue-400 to-blue-700 bg-gradient-to-tr absolute inset-0"
             ></motion.div>
             <div className="rounded-full font-bold bg-black transition-all duration-300 py-2 relative z-10 pointer-events-none">
-              {"Let's go"}
+              {"Explore"}
             </div>
           </motion.button>
         </div>

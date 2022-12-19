@@ -5,7 +5,7 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head />
-      <motion.body layout>
+      <motion.body layout className="bg-black">
         <Main />
         <NextScript />
       </motion.body>

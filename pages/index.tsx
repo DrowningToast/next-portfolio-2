@@ -1,3 +1,4 @@
+import { AnimatePresence } from "framer-motion";
 import { NextPage } from "next";
 import { useEffect, useState } from "react";
 import Hero from "../components/Hero";
@@ -18,9 +19,11 @@ const Index: NextPage = () => {
     };
   }, []);
 
-  if (!isLoaded) return <LandingLoader />;
-
-  return <Hero />;
+  return (
+    <AnimatePresence>
+      {isLoaded ? <Hero key="hero" /> : <LandingLoader key="hero-loader" />}
+    </AnimatePresence>
+  );
 };
 
 export default Index;
