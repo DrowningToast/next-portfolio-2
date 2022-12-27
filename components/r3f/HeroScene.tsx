@@ -20,12 +20,14 @@ const HeroScene = () => {
       {/* <color attach="background" args={["black"]} /> */}
       {/* <fog attach="fog" args={["#202020", 5, 20]} /> */}
       <SpotLight
+        position={[0, 50, 0]}
         distance={5}
         angle={0.15}
         attenuation={5}
         anglePower={5}
         castShadow
-        color="#b00c3f"
+        // color="#b00c3f"
+        color="#ffffff"
         receiveShadow
       >
         <Center>

@@ -11,8 +11,8 @@ import {
   Mesh,
   ShaderMaterial,
 } from "three";
-import ContactFragment from "../shader/ContactFragment.glsl";
-import ContactVertex from "../shader/ContactVertex.glsl";
+import ContactFragment from "../shader/ContactPlane/ContactFragment.glsl";
+import ContactVertex from "../shader/ContactPlane/ContactVertex.glsl";
 
 interface Props {
   xPos: MotionValue;

@@ -1,7 +1,6 @@
 import "../styles/globals.css";
 import { Inter } from "@next/font/google";
 import { AppProps } from "next/app";
-import { AnimatePresence } from "framer-motion";
 
 const inter = Inter({
   subsets: ["latin"],

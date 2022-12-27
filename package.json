@@ -36,6 +36,7 @@
     "framer-motion-3d": "^7.10.2",
     "glsl-noise": "^0.0.0",
     "glslify-loader": "^2.0.0",
+    "lamina": "^1.1.23",
     "next": "13.0.6",
     "next-seo": "^5.15.0",
     "raw-loader": "^4.0.2",

@@ -1,4 +1,9 @@
-import { OrbitControls, OrthographicCamera } from "@react-three/drei";
+import {
+  Center,
+  OrbitControls,
+  OrthographicCamera,
+  SpotLight,
+} from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { useMotionValue } from "framer-motion";
 import { FC, useRef } from "react";
@@ -15,15 +20,11 @@ const ContactScene: FC = () => {
         xPos.set(e.clientX);
         yPos.set(e.clientY);
       }}
-      style={{
-        width: "100vw",
-        height: "100vh",
-      }}
     >
       <ContactPlane xPos={xPos} yPos={yPos} />
       <ambientLight intensity={0.8} />
       <OrthographicCamera
-      makeDefault
+        makeDefault
         zoom={100}
         near={1}
         far={5000}

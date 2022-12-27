@@ -1,10 +1,10 @@
 import { NextPage } from "next";
-import ContactScene from "../components/r3f/ContactScene";
+import ProjectScene from "../components/r3f/ProjectScene";
 
 const TextPage: NextPage = () => {
   return (
-    <div>
-      <ContactScene />
+    <div className="relative w-screen h-screen">
+      <ProjectScene />
     </div>
   );
 };

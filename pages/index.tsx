@@ -1,12 +1,16 @@
 import { AnimatePresence } from "framer-motion";
 import { NextPage } from "next";
+import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
-import Hero from "../components/Hero";
+// import Hero from "../components/Hero";
+const Hero = dynamic(() => import("../components/Hero"), {
+  loading: () => <LandingLoader key="hero-loader" />,
+});
 import LandingLoader from "../components/LandingLoader";
 
 const Index: NextPage = () => {
   // Placeholder true
-  const [isLoaded, setLoaded] = useState(false);
+  const [isLoaded, setLoaded] = useState(true);
 
   // Simulate loading
   useEffect(() => {

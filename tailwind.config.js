@@ -11,6 +11,7 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ["var(--font-inter)"],
+        "sans-serif": ["var(--font-eb)"],
       },
     },
   },
