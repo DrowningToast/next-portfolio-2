@@ -10,7 +10,7 @@ import LandingLoader from "../components/LandingLoader";
 
 const Index: NextPage = () => {
   // Placeholder true
-  const [isLoaded, setLoaded] = useState(true);
+  const [isLoaded, setLoaded] = useState(false);
 
   // Simulate loading
   useEffect(() => {

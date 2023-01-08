@@ -5,7 +5,7 @@ import { Dispatch, FC, SetStateAction, useContext, useState } from "react";
 import { motion, useMotionValue, Variants } from "framer-motion";
 import ContactScene from "./r3f/ContactScene";
 import ProjectScene from "./r3f/ProjectScene";
-import { useRouter } from "next/router";
+import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 
 const variants: Variants = {
@@ -36,6 +36,10 @@ interface Props {
 
 const Navigation: FC<Props> = ({ setNav }) => {
   const [showBall, setBall] = useState<boolean>(false);
+  const [onTransition, setTransition] = useState<boolean>(false);
+
+  const path = usePathname();
+  const router = useRouter();
 
   const xPos = useMotionValue(0);
   const yPos = useMotionValue(0);
@@ -56,8 +60,22 @@ const Navigation: FC<Props> = ({ setNav }) => {
         xPos.set(e.clientX);
         yPos.set(e.clientY);
       }}
-      className="grid grid-cols-3 bg-whtie h-full relative text-white overflow-hidden"
+      className="grid grid-cols-3 h-full relative text-white overflow-hidden"
     >
+      {/* White screen */}
+      <motion.div
+        animate={{
+          display: onTransition ? "block" : "none",
+          opacity: onTransition ? 1 : 0,
+          pointerEvents: onTransition ? "none" : "auto",
+          transition: {
+            duration: 2,
+            delay: 0.5,
+          },
+        }}
+        className="absolute inset-0 bg-white z-10"
+      ></motion.div>
+      {/* ball */}
       <motion.div
         style={{
           x: xPos,
@@ -81,46 +99,45 @@ const Navigation: FC<Props> = ({ setNav }) => {
       >
         <IconX />
       </div>
-      <Link href="/profile" className="relative w-full h-full block">
-        <motion.div
-          variants={variants}
-          whileHover={{
-            scale: 1.15,
-            transition: {
-              duration: 2,
-              delay: 0.5,
-            },
-          }}
-          onClick={() => {
-            setNav(false);
-          }}
-          className="h-full relative grid place-items-center bg-gradient-to-br from-blue-500 to-blue-600 cursor-pointer"
-        >
-          <motion.h1 className="text-4xl font-bold">Profile</motion.h1>
-        </motion.div>
-      </Link>
-      <Link href="/profile" className="relative w-full h-full block">
-        <motion.div
-          variants={variants}
-          className="h-full relative grid place-items-center bg-gradient-to-br from-pink-600 to-pink-900"
-        >
-          <div className="absolute inset-0 ">
-            <ProjectScene />
-          </div>
-          <h1 className="text-4xl font-bold z-10 relative">Projects</h1>
-        </motion.div>
-      </Link>
-      <Link href="/profile" className="relative w-full h-full block">
-        <motion.div
-          variants={variants}
-          className="h-full relative grid place-items-center bg-black"
-        >
-          <div className="absolute inset-0">
-            <ContactScene />
-          </div>
-          <h1 className="text-4xl font-bold relative z-10">Contact</h1>
-        </motion.div>
-      </Link>
+      <motion.div
+        variants={variants}
+        whileHover={{
+          scale: 1.15,
+          transition: {
+            duration: 2,
+            delay: 0.5,
+          },
+        }}
+        onClick={() => {
+          if (onTransition) return;
+          if (path == "/profile") return setNav(false);
+          setTransition(true);
+          setTimeout(() => {
+            router.push("/profile");
+          }, 2500);
+        }}
+        className="h-full relative grid place-items-center bg-gradient-to-br from-blue-500 to-blue-600 cursor-pointer"
+      >
+        <motion.h1 className="text-4xl font-bold">Profile</motion.h1>
+      </motion.div>
+      <motion.div
+        variants={variants}
+        className="h-full relative grid place-items-center bg-gradient-to-br from-pink-600 to-pink-900"
+      >
+        <div className="absolute inset-0 ">
+          <ProjectScene />
+        </div>
+        <h1 className="text-4xl font-bold z-10 relative">Projects</h1>
+      </motion.div>
+      <motion.div
+        variants={variants}
+        className="h-full relative grid place-items-center bg-black"
+      >
+        <div className="absolute inset-0">
+          <ContactScene />
+        </div>
+        <h1 className="text-4xl font-bold relative z-10">Contact</h1>
+      </motion.div>
     </motion.div>
   );
 };
