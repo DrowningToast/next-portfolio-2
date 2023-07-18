@@ -2,7 +2,6 @@ import { AnimatePresence } from "framer-motion";
 import { NextPage } from "next";
 import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
-// import Hero from "../components/Hero";
 const Hero = dynamic(() => import("../components/Hero"), {
   loading: () => <LandingLoader key="hero-loader" />,
 });
@@ -19,6 +18,7 @@ const Index: NextPage = () => {
     }, 2500);
 
     return () => {
+      console.log("yed hee")
       clearTimeout(simulateLoading);
     };
   }, []);

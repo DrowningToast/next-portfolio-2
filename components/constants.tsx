@@ -8,7 +8,7 @@ import {
 } from "@tabler/icons";
 import { ReactElement } from "react";
 
-export const NAME = "Toast";
+export const NAME = "Gus";
 
 export interface IProfileInfo {
   icon: ReactElement<any, any>;

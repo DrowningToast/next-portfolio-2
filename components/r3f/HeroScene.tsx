@@ -44,7 +44,7 @@ const HeroScene = () => {
         </Center>
       </SpotLight>
       <PerspectiveCamera makeDefault position={[0, 0, 12]} />
-      <Environment preset="dawn" />
+      <Environment files="assets/HDR/evening_meadow_1k.hdr" />
       <ambientLight intensity={0.5} />
     </Canvas>
   );
