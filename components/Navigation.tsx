@@ -25,6 +25,8 @@ const variants: Variants = {
     y: "-100%",
     transition: {
       duration: 0.65,
+      delayChildren: 0.2,
+      staggerChildren: 0.4,
       ease: "easeOut",
     },
   },
@@ -73,9 +75,8 @@ const Navigation: FC<Props> = ({ setNav }) => {
             delay: 0.5,
           },
         }}
-        className="absolute inset-0 bg-white z-10"
+        className="absolute inset-0 z-10"
       ></motion.div>
-      {/* ball */}
       <motion.div
         style={{
           x: xPos,
@@ -90,9 +91,8 @@ const Navigation: FC<Props> = ({ setNav }) => {
         }}
         className="absolute z-10 flex transform -translate-x-1/2 -translate-y-1/2 pointer-events-none"
       >
-        <div className="bg-white blur-[128px] bg-opacity-30 min-w-[128px] min-h-[128px] rounded-full absolute z-10 block transform -translate-x-1/2 -translate-y-1/2"></div>
+        <div className="blur-[128px] bg-opacity-30 min-w-[128px] min-h-[128px] rounded-full absolute z-10 block transform -translate-x-1/2 -translate-y-1/2"></div>
       </motion.div>
-
       <div
         onClick={() => setNav(false)}
         className="absolute top-4 right-4 z-10 cursor-pointer"

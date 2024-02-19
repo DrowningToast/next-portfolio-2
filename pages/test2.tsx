@@ -1,13 +1,12 @@
 import { NextPage } from "next"
 import { motion } from 'framer-motion'
+import ContactScene from "../components/r3f/ContactScene"
 
 const Page: NextPage = () => {
     return (
-        <motion.h1 className="text-white font-bold text-2xl inline-block" whileHover={{
-            scale: 2
-        }} >
-            Hello World
-        </motion.h1>
+        <div className="w-screen h-screen relative">
+            <ContactScene />
+        </div>
     )
 }
 

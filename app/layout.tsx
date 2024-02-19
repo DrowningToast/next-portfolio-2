@@ -1,7 +1,6 @@
 "use client";
 
 import "../styles/globals.css";
-import type { AppProps } from "next/app";
 import { AnimatePresence, LayoutGroup, motion } from "framer-motion";
 import { Inter, EB_Garamond } from "@next/font/google";
 import Navigation from "../components/Navigation";

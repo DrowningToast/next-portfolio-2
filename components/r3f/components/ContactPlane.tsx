@@ -49,7 +49,7 @@ const ContactPlane: FC<Props> = ({ xPos, yPos }) => {
   });
 
   return (
-    <mesh ref={mesh} rotation={[Math.PI / 2, 0, 0]}>
+    <mesh ref={mesh} >
       <planeGeometry args={[32, 32, 512, 512]} />
       <shaderMaterial
         // wireframe
